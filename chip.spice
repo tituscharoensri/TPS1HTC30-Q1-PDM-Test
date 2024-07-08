@@ -1,0 +1,23 @@
+* Basic high-side switch with PMOS transistor
+
+* Power supply
+Vcc 1 0 DC 12V
+
+* Load
+Rload 1 2 1k
+
+* PMOS transistor (IRF9540)
+M1 2 0 1 1 PMOS(L=10u W=100u)
+
+* Control signal (logic high for on, low for off)
+Vctrl 1 0 DC 0V
+
+* Analysis commands
+.TRAN 0 10m 0 1u
+
+* DC Operating Point analysis
+.OP
+
+* Output
+.print TRAN V(1) I(Rload)
+.plot TRAN V(1) V(2)
